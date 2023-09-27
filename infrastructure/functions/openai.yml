@@ -1,0 +1,8 @@
+hello:
+  name: ${self:custom.projectName}-${sls:stage}-handler
+  handler: ././src/api/handler.handler
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/hello
+        method: get

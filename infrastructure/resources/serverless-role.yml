@@ -1,0 +1,16 @@
+-  PolicyName: ${self:custom.projectName}-${sls:stage}-lambda-execution-policy
+   PolicyDocument:
+     Version: '2012-10-17'
+     Statement:
+       - Effect: Allow
+         Action:
+           - logs:CreateLogGroup
+           - logs:CreateLogStream
+           - logs:PutLogEvents
+         Resource:
+           - arn:aws:logs:*:*:log-group:/aws/lambda/${self:custom.projectName}-${sls:stage}-*
+       - Effect: Allow
+         Action:
+           - lambda:InvokeAsync
+           - lambda:InvokeFunction
+         Resource: "*"

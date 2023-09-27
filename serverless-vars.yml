@@ -1,0 +1,6 @@
+projectName: aspir-ally
+env: ${self:provider.stage}
+runtime: nodejs18.x
+region: ${opt:region,'us-east-1'}
+tags: 
+  Project: AspirAlly

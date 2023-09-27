@@ -1,0 +1,26 @@
+app: aspir-ally
+service: aspir-ally
+frameworkVersion: '3'
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+custom: ${file(./serverless-vars.yml)}
+
+provider:
+  name: aws
+  runtime: ${self:custom.runtime}
+  region: ${self:custom.region}
+  timeout: 30
+  tags: ${self:custom.tags}
+  stage: ${opt:stage,'dev'}
+  iam:
+    role:
+      name: GlobalPerFunctionRole
+    
+functions:
+  - ${file(./infrastructure/functions/openai.yml)}
+
+resources:
+  Resources: ${file(./infrastructure/resources/serverless-cfn.yml)}
