@@ -1,0 +1,16 @@
+hello:
+  name: ${self:custom.projectName}-${sls:stage}-handler
+  handler: ././src/api/handler.handler
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/hello
+        method: get
+getShortTermGoals:
+  name: ${self:custom.projectName}-${sls:stage}-getShortTermGoals
+  handler: ././src/api/goal.getShortTermGoals
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/goal/short
+        method: get
