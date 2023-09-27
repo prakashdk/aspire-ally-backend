@@ -15,12 +15,14 @@ provider:
   timeout: 30
   tags: ${self:custom.tags}
   stage: ${opt:stage,'dev'}
+  environment: 
+    OPENAI_API_KEY: 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
   iam:
     role:
       name: GlobalPerFunctionRole
     
 functions:
-  - ${file(./infrastructure/functions/openai.yml)}
+  - ${file(./infrastructure/functions/goal.yml)}
 
 resources:
   Resources: ${file(./infrastructure/resources/serverless-cfn.yml)}
