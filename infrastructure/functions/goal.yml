@@ -8,9 +8,41 @@ hello:
         method: get
 getShortTermGoals:
   name: ${self:custom.projectName}-${sls:stage}-getShortTermGoals
-  handler: ././src/api/goal.getShortTermGoals
+  handler: ././src/api/GoalController.getShortTermGoals
   role: GlobalPerFunctionRole
   events:
     - http:
         path: api/goal/short
+        method: get
+getSteps:
+  name: ${self:custom.projectName}-${sls:stage}-getSteps
+  handler: ././src/api/GoalController.getSteps
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/goal/short/action
+        method: get
+getTasks:
+  name: ${self:custom.projectName}-${sls:stage}-getTasks
+  handler: ././src/api/GoalController.getTasks
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/goal/short/task
+        method: get
+getRelatedTechnologies:
+  name: ${self:custom.projectName}-${sls:stage}-getRelatedTechnologies
+  handler: ././src/api/GoalController.getRelatedTechnologies
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/goal/tech
+        method: get
+getShortTermGoalRelatedTechnologies:
+  name: ${self:custom.projectName}-${sls:stage}-getRelatedTechnologies
+  handler: ././src/api/GoalController.getRelatedTechnologies
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/goal/short/tech
         method: get
