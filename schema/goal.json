@@ -1,0 +1,28 @@
+{
+  "goal": "",
+  "description":"",
+  "shortTermGoals": [
+    {
+      "topic": "",
+      "actions": [
+        {
+          "steps": [
+            {
+              "step": "",
+              "description": "",
+              "time": "",
+              "tasks": [
+                {
+                  "task": "",
+                  "description": "",
+                  "time": ""
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "time": ""
+    }
+  ]
+}
