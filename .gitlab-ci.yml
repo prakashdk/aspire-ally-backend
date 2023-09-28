@@ -1,9 +1,17 @@
+image: node:9
+
+stages:
+- deploy
+
+before_script:
+- apt-get update
+- apt-get install build-essential awscli -y
+- yarn global add serverless
+- make install
 
 
-assume role:
-  image: 
-      name: amazon/aws-cli:latest
-      entrypoint: [""]
+sls_deploy:
+  stage: deploy
   id_tokens:
     GITLAB_OIDC_TOKEN:
       aud: https://gitlab.presidio.com
@@ -20,4 +28,8 @@ assume role:
       --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]'
       --output text))
     - aws sts get-caller-identity
-    - aws s3 ls --region us-east-1
+    - echo "Installing serverless packages"
+    - serverless plugin install -n serverless-webpack
+    - serverless plugin install -n serverless-offline
+    - echo "Deploy Serverless to AWS "
+    - sls info
