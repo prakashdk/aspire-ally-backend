@@ -9,7 +9,7 @@ before_script:
 # - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 # - unzip awscliv2.zip
 # - sudo ./aws/install
-- npm install -g serverless
+- sudo npm install -g serverless
 
 
 sls_deploy:
@@ -35,3 +35,5 @@ sls_deploy:
     - serverless plugin install -n serverless-offline
     - echo "Deploy Serverless to AWS "
     - sls info
+  # rules:
+  #   - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME == "main"'
