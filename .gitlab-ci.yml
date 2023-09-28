@@ -4,12 +4,10 @@ stages:
 - deploy
 
 before_script:
-# - apt-get update -y
-# - apt-get install build-essential awscli -y
-# - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-# - unzip awscliv2.zip
-# - sudo ./aws/install
 - sudo npm install -g serverless
+- echo "Installing serverless packages"
+- serverless plugin install -n serverless-webpack
+- serverless plugin install -n serverless-offline
 
 
 sls_deploy:
@@ -30,10 +28,7 @@ sls_deploy:
       --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]'
       --output text))
     - aws sts get-caller-identity
-    - echo "Installing serverless packages"
-    - serverless plugin install -n serverless-webpack
-    - serverless plugin install -n serverless-offline
     - echo "Deploy Serverless to AWS "
-    - sls info
-  # rules:
-  #   - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME == "main"'
+    - sls deploy
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME == "main"'
