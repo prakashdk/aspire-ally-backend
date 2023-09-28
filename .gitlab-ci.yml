@@ -4,7 +4,7 @@ stages:
 - deploy
 
 before_script:
-- apt-get update
+- apt-get update -y
 - apt-get install build-essential awscli -y
 - yarn global add serverless
 - make install
