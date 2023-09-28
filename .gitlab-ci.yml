@@ -1,4 +1,4 @@
-image: node:9
+image:  node:14.19.0
 
 stages:
 - deploy
@@ -6,8 +6,10 @@ stages:
 before_script:
 - apt-get update -y
 - apt-get install build-essential awscli -y
-- yarn global add serverless
-- make install
+- curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+- unzip awscliv2.zip
+- sudo ./aws/install
+- npm install -g serverless
 
 
 sls_deploy:
