@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Gitlab OIDC Role
+
+Resources:
+
+  GitlabOIDC:
+    Type: AWS::IAM::OIDCProvider
+    Properties: 
+      ClientIdList: 
+        - https://gitlab.presidio.com
+      Tags: 
+        - Key: Role
+          Value: GitlabCI
+        - Key: CreatedBy
+          Value: AWS_Stacksets
+      ThumbprintList: 
+        - 47beabc922eae80e78783462a79f45c254fde68b
+      Url: https://gitlab.presidio.com
+
+  GitlabRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: GitLabCI
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          -
+            Effect: Allow
+            Principal:
+              Federated:
+                - !GetAtt GitlabOIDC.Arn
+            Condition:
+              StringLike:
+                "gitlab.presidio.com:sub": "project_path:htf-donothing/aspir-ally/*:ref_type:branch:ref:*"
+            Action:
+              - sts:AssumeRoleWithWebIdentity
+      Path: /
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AdministratorAccess
