@@ -51,4 +51,16 @@ export default class GoalService {
       return Response.error(error.message);
     }
   };
+  static getQuiz = async (params) => {
+    console.log(params);
+    try {
+      if (isEmpty(params?.topic)) {
+        throw new Error("Topic is either empty/invalid");
+      }
+      const response = await GoalRepository.getQuiz(params);
+      return Response.ok(response);
+    } catch (error) {
+      return Response.error(error.message);
+    }
+  };
 }

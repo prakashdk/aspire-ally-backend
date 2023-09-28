@@ -46,3 +46,11 @@ getShortTermGoalRelatedTechnologies:
     - http:
         path: api/goal/short/tech
         method: get
+getQuiz:
+  name: ${self:custom.projectName}-${sls:stage}-getQuiz
+  handler: ././src/api/GoalController.getQuiz
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/goal/short/quiz
+        method: get

@@ -21,9 +21,15 @@ class GoalController {
     const count = event?.queryStringParameters?.count;
     return GoalService.getRelatedTechnologies({topic,count});
   }
+  static getQuiz(event) {
+    const topic = event?.queryStringParameters?.topic;
+    const count = event?.queryStringParameters?.count;
+    return GoalService.getQuiz({topic,count});
+  }
 }
 
 export const getShortTermGoals = GoalController.getShortTermGoals;
 export const getSteps = GoalController.getStepsForShortTermActions;
 export const getRelatedTechnologies = GoalController.getRelatedTechnologies;
 export const getTasks = GoalController.getTasksForSteps;
+export const getQuiz = GoalController.getQuiz;
