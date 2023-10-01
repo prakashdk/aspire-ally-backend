@@ -1,4 +1,5 @@
 import GoalRepository from "../repository/GoalRepository";
+import ImageRepository from "../repository/ImageRepository";
 import Response from "../utils/response";
 import { isEmpty } from "../utils/validate";
 
@@ -10,8 +11,11 @@ export default class GoalService {
         throw new Error("Goal is either empty/invalid");
       }
       const response = await GoalRepository.getShortTermGoals(params);
-      return Response.ok(response);
+      const image = await ImageRepository.getImage(params);
+      return Response.ok({ title: params.goal, progress: 0, image, ...
+        response });
     } catch (error) {
+      console.log(error);
       return Response.error(error.message);
     }
   };
