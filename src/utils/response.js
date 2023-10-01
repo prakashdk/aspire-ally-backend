@@ -9,7 +9,7 @@ export default class Response {
     return {
       statusCode: 200,
       headers: this.headers,
-      body: JSON.stringify({ response }),
+      body: JSON.stringify({ ...response }),
     };
   };
 
