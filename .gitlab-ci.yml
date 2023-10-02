@@ -28,6 +28,7 @@ sls_deploy:
       --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]'
       --output text))
     - aws sts get-caller-identity
+    - export OPENAI_API_KEY=${OPENAI_API_KEY}
     - echo "Deploy Serverless to AWS "
     - sls deploy
   rules:
