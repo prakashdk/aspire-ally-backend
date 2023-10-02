@@ -16,7 +16,7 @@ provider:
   tags: ${self:custom.tags}
   stage: ${opt:stage,'dev'}
   environment: 
-    OPENAI_API_KEY: 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
+    OPENAI_API_KEY: ${env:OPENAI_API_KEY}
   iam:
     role:
       name: GlobalPerFunctionRole
