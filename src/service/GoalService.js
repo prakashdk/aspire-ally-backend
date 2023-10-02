@@ -67,4 +67,12 @@ export default class GoalService {
       return Response.error(error.message);
     }
   };
+  static getQuotes = async () => {
+    try {
+      const response = await GoalRepository.getQuotes();
+      return Response.ok(response);
+    } catch (error) {
+      return Response.error(error.message);
+    }
+  };
 }

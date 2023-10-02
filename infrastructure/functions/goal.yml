@@ -54,3 +54,11 @@ getQuiz:
     - http:
         path: api/goal/short/quiz
         method: get
+getQuotes:
+  name: ${self:custom.projectName}-${sls:stage}-getQuotes
+  handler: ././src/api/GoalController.getQuotes
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/goal/quote
+        method: get

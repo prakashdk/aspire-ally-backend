@@ -26,6 +26,9 @@ class GoalController {
     const count = event?.queryStringParameters?.count;
     return GoalService.getQuiz({topic,count});
   }
+  static getQuotes(event) {
+    return GoalService.getQuotes();
+  }
 }
 
 export const getShortTermGoals = GoalController.getShortTermGoals;
@@ -33,3 +36,4 @@ export const getSteps = GoalController.getStepsForShortTermActions;
 export const getRelatedTechnologies = GoalController.getRelatedTechnologies;
 export const getTasks = GoalController.getTasksForSteps;
 export const getQuiz = GoalController.getQuiz;
+export const getQuotes = GoalController.getQuotes;
