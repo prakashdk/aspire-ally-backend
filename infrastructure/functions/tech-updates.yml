@@ -1,0 +1,35 @@
+getLatestTechNews:
+  name: ${self:custom.projectName}-${sls:stage}-getLatestTechNews
+  handler: ././src/api/TechUpdateController.getLatestTechNews
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/tech/news
+        method: get
+
+getlatestTechNewsFromGoals:
+  name: ${self:custom.projectName}-${sls:stage}-getLatestTechNewsFromGoals
+  handler: ././src/api/TechUpdateController.getLatestTechNewsFromGoals
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/tech/goals-based-news
+        method: get
+
+getLatestTechContent:
+  name: ${self:custom.projectName}-${sls:stage}-getLatestTechContent
+  handler: ././src/api/TechUpdateController.getLatestTechContent
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/tech/whats-new-update
+        method: get
+
+getlatestTechContentsFromGoals:
+  name: ${self:custom.projectName}-${sls:stage}-getLatestTechContentFromGoals
+  handler: ././src/api/TechUpdateController.getLatestTechContentFromGoals
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/tech/goals-based-new-updates
+        method: get
