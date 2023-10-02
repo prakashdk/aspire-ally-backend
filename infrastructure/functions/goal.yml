@@ -39,7 +39,7 @@ getRelatedTechnologies:
         path: api/goal/tech
         method: get
 getShortTermGoalRelatedTechnologies:
-  name: ${self:custom.projectName}-${sls:stage}-getRelatedTechnologies
+  name: ${self:custom.projectName}-${sls:stage}-getShortTermGoalRelatedTechnologies
   handler: ././src/api/GoalController.getRelatedTechnologies
   role: GlobalPerFunctionRole
   events:
