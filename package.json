@@ -4,6 +4,9 @@
     "serverless-webpack": "^5.13.0"
   },
   "dependencies": {
-    "openai": "^4.10.0"
+    "dynamoose": "^3.2.1",
+    "openai": "^4.10.0",
+    "uuid": "^9.0.1",
+    "v4": "^0.0.1"
   }
 }

@@ -1,0 +1,32 @@
+addUser:
+  name: ${self:custom.projectName}-${sls:stage}-addUser
+  handler: ././src/api/UserController.addUser
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/user/add
+        method: post
+addGoal:
+  name: ${self:custom.projectName}-${sls:stage}-addGoal
+  handler: ././src/api/UserController.addGoal
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/user/{id}/goal/add
+        method: post
+getAllGoals:
+  name: ${self:custom.projectName}-${sls:stage}-getAllGoals
+  handler: ././src/api/UserController.getAllGoals
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/user/{id}/goal
+        method: get
+updateProgress:
+  name: ${self:custom.projectName}-${sls:stage}-updateProgress
+  handler: ././src/api/UserController.updateProgress
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/user/{id}/goal/{goalId}
+        method: post
