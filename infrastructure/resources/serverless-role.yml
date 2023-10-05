@@ -14,3 +14,7 @@
            - lambda:InvokeAsync
            - lambda:InvokeFunction
          Resource: "*"
+       - Effect: Allow
+         Action:
+           - dynamodb:*
+         Resource: "*"

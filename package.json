@@ -9,6 +9,9 @@
     "chromedriver": "^117.0.3",
     "openai": "^4.10.0",
     "selenium-webdriver": "^4.13.0",
-    "unirest": "^0.6.0"
+    "unirest": "^0.6.0",
+    "dynamoose": "^3.2.1",
+    "uuid": "^9.0.1",
+    "v4": "^0.0.1"
   }
 }
