@@ -16,7 +16,7 @@ provider:
   tags: ${self:custom.tags}
   stage: ${opt:stage,'dev'}
   environment:
-    OPENAI_API_KEY: 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
+    OPENAI_API_KEY: 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
     AWS_ACCESS_KEY_ID: "fakeMyKeyId"
     AWS_SECRET_ACCESS_KEY: "fakeSecretAccessKey"
     AWS_REGION: "us-east-1"

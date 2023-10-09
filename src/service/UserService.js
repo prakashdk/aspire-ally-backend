@@ -5,9 +5,10 @@ import { isEmpty } from "../utils/validate";
 
 export default class UserService {
   static addUser = async (params) => {
+    const {email,password}=params
     try {
-      if (isEmpty(params?.email)) {
-        throw new Error("Email is either empty/invalid");
+      if (isEmpty(email)|| isEmpty(password)) {
+        throw new Error("Email/Password is either empty");
       }
       const response = await UserRepository.addUser(params);
       return Response.ok(response);
@@ -17,7 +18,6 @@ export default class UserService {
     }
   };
   static addGoal = async (params) => {
-    console.log(params);
     try {
       if (isEmpty(params?.id)) {
         throw new Error("Id is either empty/invalid");
@@ -30,7 +30,6 @@ export default class UserService {
     }
   };
   static getAllGoals = async (params) => {
-    console.log(params);
     try {
       if (isEmpty(params?.id)) {
         throw new Error("Id is either empty/invalid");
@@ -43,7 +42,6 @@ export default class UserService {
     }
   };
   static updateProgress = async (params) => {
-    console.log(params);
     try {
       if (isEmpty(params?.id)) {
         throw new Error("Id is either empty/invalid");

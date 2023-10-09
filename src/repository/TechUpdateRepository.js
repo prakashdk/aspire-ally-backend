@@ -9,9 +9,9 @@ export default class TechUpdateRepository {
   }
 
   static getTechfromGoals = async (goals) => {
-    // const prompt = `Give me a json output with key as techNames and value as list of what is the single major technology used to achieve the goals provided here "${goals}" that is separated by ; and don't add additional text`
-    const prompt = `Give me what is the respective single major technology used to achieve the goals ${goals} as an array and assign it to a json output with a key as techNames and please don't add additional text`;
+    const prompt = `Give me 5 tools and technologies related to the goals ${goals} as an array and assign it to a json output with a key as techNames and please don't add additional text`;
     const result = await Prompter.getGPTResponse(prompt)
+    console.log(result);
     return result.techNames;
   }
 
@@ -49,7 +49,7 @@ export default class TechUpdateRepository {
     const technology = await this.getTechfromGoals(goals);
     console.log("Fetched ", technology)
     const techUpdates = JSON.stringify( await scrapeTechUpdatesV2(technology) );
-    const prompt = `Give me a 5 line short summary of the HtmlContent in the following JSON ${techUpdates} which has techUpdateResults as parent key and iterate over the values and use htmlContent key to take the content. After summarising Replace htmlContent key's value with the summarised content and return with same JSON input and don't add additional text`;
+    const prompt = `Give me a brief summary of the HtmlContent in the following JSON ${techUpdates} which has techUpdateResults as parent key and iterate over the values and use htmlContent key to take the content. After summarising Replace htmlContent key's value with the summarised content and return with same JSON input and don't add additional text`;
     return await Prompter.getGPTResponse(prompt)
   };
 

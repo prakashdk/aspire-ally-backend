@@ -1,5 +1,7 @@
 import GoalRepository from "../repository/GoalRepository";
 import ImageRepository from "../repository/ImageRepository";
+import UserRepository from "../repository/UserRepository";
+import Random from "../utils/random";
 import Response from "../utils/response";
 import { isEmpty } from "../utils/validate";
 
@@ -12,8 +14,14 @@ export default class GoalService {
       }
       const response = await GoalRepository.getShortTermGoals(params);
       const image = await ImageRepository.getImage(params);
-      return Response.ok({ title: params.goal, progress: 0, image, ...
-        response });
+      const goal = {
+        title: params.goal,
+        progress: 0,
+        image,
+        ...response,
+      };
+      const dbResponse = await UserRepository.addGoal({ id: params.id, goal });
+      return Response.ok(goal);
     } catch (error) {
       console.log(error);
       return Response.error(error.message);

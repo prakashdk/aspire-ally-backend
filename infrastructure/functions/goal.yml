@@ -12,7 +12,7 @@ getShortTermGoals:
   role: GlobalPerFunctionRole
   events:
     - http:
-        path: api/goal/short
+        path: api/goal/{id}/short
         method: get
 getSteps:
   name: ${self:custom.projectName}-${sls:stage}-getSteps

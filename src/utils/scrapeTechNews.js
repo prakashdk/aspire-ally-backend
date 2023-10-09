@@ -52,7 +52,7 @@ export const scrapeTechNewsV2 = async (techNames) => {
     for (const techName of techNames) {
           const newsResult = await scrapeTechNews(techName);
           techNewsResults.push(...newsResult.techNewsResults);
-          // console.log(techNewsResults)    
+          console.log(newsResult)    
         };
 
         return {

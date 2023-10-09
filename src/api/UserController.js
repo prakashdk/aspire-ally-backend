@@ -11,8 +11,8 @@ class UserController {
     return UserService.addGoal({ id, goal });
   }
   static getAllGoals(event) {
-    const id = event?.body?.id;
-    return UserService.getAllGoals(id);
+    const id = event?.pathParameters?.id;
+    return UserService.getAllGoals({id});
   }
   static updateProgress(event) {
     const id = event?.pathParameters?.id;
@@ -20,6 +20,25 @@ class UserController {
     const { goal } = JSON.parse(event?.body);
     return UserService.updateProgress({ id, goalId, goal });
   }
+  static getTask(event) {
+    const id = event?.pathParameters?.id;
+    const taskId = event?.pathParameters?.taskId;
+    const { goal } = JSON.parse(event?.body);
+    return UserService.updateProgress({ id, goalId, goal });
+  }
+  static addTask(event) {
+    const shortTermGoalId = event?.pathParameters?.shortTermGoalId;
+    const actionId = event?.pathParameters?.actionId;
+    const goalId = event?.pathParameters?.goalId;
+    const { goal } = JSON.parse(event?.body);
+    return UserService.updateProgress({ id, goalId, goal });
+  }
+  // static (event) {
+  //   const id = event?.pathParameters?.id;
+  //   const goalId = event?.pathParameters?.goalId;
+  //   const { goal } = JSON.parse(event?.body);
+  //   return UserService.updateProgress({ id, goalId, goal });
+  // }
 }
 
 export const addGoal = UserController.addGoal;

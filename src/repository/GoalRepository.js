@@ -10,13 +10,6 @@ export default class GoalRepository {
           id: "",
           topic: "",
           actions: [],
-<<<<<<< HEAD
-          timeSpan: ""
-        }
-      ]
-    }
-    const prompt = `Give me ${promptCount} short-term goals to achieve ${goal} as JSON with id - a random alphanumeric uuid, topics, actions and timeSpan as keys and add approximate time span to every short term goals. The actions should be self-explanatory. Add description about ${goal}. assign the final JSON output to a key shortTermGoals. The final response should be in JSON format: ${JSON.stringify(format)}`;
-=======
           timeSpan: "",
         },
       ],
@@ -24,7 +17,6 @@ export default class GoalRepository {
     const prompt = `Give me ${promptCount} short-term goals to achieve ${goal} as JSON with id - a random alphanumeric uuid, topics, actions and timeSpan as keys and add approximate time span to every short term goals. The actions should be self-explanatory. Add description about ${goal}. assign the final JSON output to a key shortTermGoals. The final response should be in JSON format: ${JSON.stringify(
       format
     )}`;
->>>>>>> migrate/gitlab
     return await Prompter.getGPTResponse(prompt);
   };
   static getSteps = async ({ action, count }) => {
@@ -45,13 +37,9 @@ export default class GoalRepository {
       ],
     };
     // const promptCount = isEmpty(count) || count > 2 ? 2 : count;
-<<<<<<< HEAD
-    const prompt = `Give hands-on tasks to ${step}. The tasks should be hard, and the description should be clear, detailed, and self-explanatory. Give the response as JSON, where the keys are the id - a random alphanumeric uuid, topic, description, timeSpan and references. Assign the final JSON output to a key: tasks.`;
-=======
     const prompt = `Give hands-on tasks to ${step}. The tasks should be hard, and the description should be clear, detailed, and self-explanatory. Give the response as JSON, where the keys are the id - a random alphanumeric uuid, topic, description, timeSpan and references. Assign the final JSON output to a key: tasks. The final response should be in JSON format: ${JSON.stringify(
       format
     )}`;
->>>>>>> migrate/gitlab
     return await Prompter.getGPTResponse(prompt);
   };
   static getRelatedTechnologies = async ({ topic, count }) => {
@@ -60,8 +48,23 @@ export default class GoalRepository {
     return await Prompter.getGPTResponse(prompt);
   };
   static getQuiz = async ({ topic, count }) => {
+    const format = {
+      quiz: [
+        {
+          id: "",
+          question: "",
+          options: {
+            A: "",
+            B: "",
+            C: "",
+            D: "",
+          },
+          answer: "",
+        },
+      ],
+    };
     const promptCount = isEmpty(count) || count > 5 ? 5 : count;
-    const prompt = `Give me a set of ${promptCount} hard quizzes with options regarding ${topic}. The final response should be in JSON format, with id - a random alphanumeric uuid, questions, options should be key value pairs like A,B,C,D and answers as keys. Answer should have the key from options. Assign the final output to a key: quiz.`;
+    const prompt = `Give me a set of ${promptCount} hard quizzes with options regarding ${topic}. The final response should be in JSON format, with id - a random alphanumeric uuid, questions, options should be key value pairs like A,B,C,D and answers as keys. Answer should have the key from options. Assign the final output to a key: quiz. The output should be in format: ${format}`;
     return await Prompter.getGPTResponse(prompt);
   };
   static getQuotes = async () => {

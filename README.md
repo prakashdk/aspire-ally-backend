@@ -6,7 +6,7 @@ serverless plugin install -n serverless-offline
 ```
 
 ### Run Locally
-`sls offline start`
+`sls offline start --noTimeout --reloadHandler`
 
 ### Deploy
 `sls deploy`

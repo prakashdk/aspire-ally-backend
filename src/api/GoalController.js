@@ -2,9 +2,11 @@ import GoalService from "../service/GoalService";
 
 class GoalController {
   static getShortTermGoals(event) {
+
+    const id = event?.pathParameters?.id;
     const goal = event?.queryStringParameters?.goal;
     const count = event?.queryStringParameters?.count;
-    return GoalService.getShortTermGoals({goal,count});
+    return GoalService.getShortTermGoals({id,goal,count});
   }
   static getStepsForShortTermActions(event) {
     const action = event?.queryStringParameters?.action;

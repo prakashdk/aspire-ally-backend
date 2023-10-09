@@ -22,6 +22,14 @@ getAllGoals:
     - http:
         path: api/user/{id}/goal
         method: get
+getTasks:
+  name: ${self:custom.projectName}-${sls:stage}-getTasks
+  handler: ././src/api/UserController.getTasks
+  role: GlobalPerFunctionRole
+  events:
+    - http:
+        path: api/user/{id}/goal/task
+        method: get
 updateProgress:
   name: ${self:custom.projectName}-${sls:stage}-updateProgress
   handler: ././src/api/UserController.updateProgress
